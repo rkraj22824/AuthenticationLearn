@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1033317665722",
+    "project_id": "authenticationlearn-69cc9",
+    "storage_bucket": "authenticationlearn-69cc9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1033317665722:android:f5dac994a83103a9c1ab83",
+        "android_client_info": {
+          "package_name": "com.example.authenticationlearn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBr8JPRZB8aqQB7I8y2dCJIGvpuFEuZBJM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
