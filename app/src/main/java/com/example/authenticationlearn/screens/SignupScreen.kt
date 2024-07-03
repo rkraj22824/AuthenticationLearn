@@ -26,11 +26,15 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
+import com.example.authenticationlearn.navigation.Screen
 import com.example.authenticationlearn.viewmodel.RegisterViewModel
 
 
 @Composable
-fun SignupScreen(){
+fun SignupScreen(
+    navController: NavController
+){
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -83,7 +87,7 @@ fun SignupScreen(){
            }catch(e:Exception){
                Log.d("SignupScreen","Register :->"+e.message)
            }finally {
-               Toast.makeText(context,"Added",Toast.LENGTH_SHORT).show()
+               navController.navigate(Screen.HomeScreen.route)
            }
         },
             shape = RoundedCornerShape(50.dp),
@@ -95,10 +99,4 @@ fun SignupScreen(){
             Text(text = "Signup")
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun SignupPreview(){
-    SignupScreen()
 }

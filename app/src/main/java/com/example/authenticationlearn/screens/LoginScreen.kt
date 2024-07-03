@@ -1,5 +1,7 @@
 package com.example.authenticationlearn.screens
 
+import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -19,17 +21,31 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
+import com.example.authenticationlearn.domain.repository.LoginRepository
+import com.example.authenticationlearn.navigation.Screen
+import com.example.authenticationlearn.viewmodel.LoginViewModel
+import com.example.authenticationlearn.viewmodel.RegisterViewModel
 
 
 @Composable
-fun LoginScreen(){
+fun LoginScreen(
+    navController: NavController
+){
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+
     ){
+
+        val context= LocalContext.current
+        val loginViewModel= hiltViewModel<LoginViewModel>()
+
         var email by remember {
             mutableStateOf("")
         }
@@ -49,7 +65,16 @@ fun LoginScreen(){
                 password=it
             })
         Spacer(modifier = Modifier.height(20.dp))
-        Button(onClick = {},
+        Button(onClick = {
+            try {
+                loginViewModel.login(email, password)
+                Log.d("SignupScreen","I am here :->")
+            }catch(e:Exception){
+                Log.d("SignupScreen","Login :->"+e.message)
+            }finally {
+               navController.navigate(Screen.HomeScreen.route)
+            }
+        },
             shape = RoundedCornerShape(50.dp),
             modifier = Modifier.fillMaxWidth().height(40.dp).padding(horizontal = 60.dp)
         ) {

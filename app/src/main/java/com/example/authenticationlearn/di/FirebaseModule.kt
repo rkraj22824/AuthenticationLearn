@@ -1,6 +1,8 @@
 package com.example.authenticationlearn.di
 
+import com.example.authenticationlearn.domain.repository.LoginRepository
 import com.example.authenticationlearn.domain.repository.RegisterRepository
+import com.example.authenticationlearn.domain.repository.UserRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import com.google.firebase.auth.ktx.auth
@@ -28,4 +30,11 @@ class FirebaseModule {
     @Provides
     fun provideRegisterRepository(fAuth: FirebaseAuth,db:FirebaseFirestore):RegisterRepository=RegisterRepository(fAuth,db)
 
+    @Singleton
+    @Provides
+    fun provideLoginRepository(fAuth: FirebaseAuth,db: FirebaseFirestore):LoginRepository=LoginRepository(fAuth,db)
+
+    @Singleton
+    @Provides
+    fun provideUserRepository(db: FirebaseFirestore):UserRepository=UserRepository(db)
 }

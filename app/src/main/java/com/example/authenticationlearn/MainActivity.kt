@@ -25,6 +25,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.authenticationlearn.navigation.Navigation
 import com.example.authenticationlearn.screens.LoginScreen
 import com.example.authenticationlearn.screens.SignupScreen
 import com.example.authenticationlearn.ui.theme.AuthenticationLearnTheme
@@ -37,7 +38,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-                SignupScreen()
+               Navigation()
             }
         }
     }

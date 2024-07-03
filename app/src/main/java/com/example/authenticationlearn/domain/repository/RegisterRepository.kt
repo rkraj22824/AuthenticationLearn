@@ -39,6 +39,14 @@ class RegisterRepository @Inject constructor(
             close()
         }
     }
+    fun delete(id:String){
+        db.collection("users").document(id)
+            .delete()
+            .addOnSuccessListener {
+                Log.d("delete","Data Deleted")
+            }
+            .addOnFailureListener {  }
+    }
 }
 
 
